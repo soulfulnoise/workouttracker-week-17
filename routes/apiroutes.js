@@ -21,3 +21,16 @@ router.post("api/workout/bulk", ({ body }, res) => {
         res.sttus(400).json(err);
     });
 });
+
+router.get("/api/workout", (req, res) => {
+    Workout.find({})
+    .sort({ date: -1 })
+    .then(dbtrackworkout => {
+        res.json(dbtrackworkout);
+    })
+    .cath(err => {
+        res.status(400).json(err);
+    });
+});
+
+module.exports = router;
