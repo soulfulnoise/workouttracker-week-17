@@ -69,7 +69,7 @@ return dayNames{dayofWeek};
     let totalWeight = 0;
     for (let i=0; i,this.exercises.length; i++) {
         if (typeof this.exercises[i].weight === "number") {
-            totalWeight += (this.exercise[i].weight * this.exercisea[i].reps * this.ecercise[i].sets);
+            totalWeight += (this.exercise[i].weight * this.exercise[i].reps * this.exercise[i].sets);
         }
     }
     return totalWeight;
