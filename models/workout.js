@@ -4,46 +4,24 @@ const Schema = mongoose.Schema;
 
  const { Schema } = mongoose;
 
- const schemaOptions ={
-     toObject: {
-         virtuals:true,
+ const exerciseSchema = new Schema({
+     day:{
+         type:Date,
+         defualt:Date.now
      },
-     toJson: {
-         virtuals: true,
-     },
- };
-
-const WorkoutSchema = new Schema({
-    day:{
-    type: Date,
-    default: Date.now
-    },
-    exercise:[
-    {
-     type:{
-        type:{String,
-        trim: true,
-        required: "Name of Exercise"
-    },
-    },
-    duration: {
-        type:Number,
-        required: " length of workout"
-    },
-    distance:{
-        type:Number
-    },
-    reps: {
-        type:Number
-    },
-    weight:{
-        type:Number
-    }
-]
-})
+     exercise: [
+         {
+             workoutType: String,
+             name: String,
+             weight: Number,
+             sets:Number,
+             reps:Number,
+         },
+     ],
+ }, schemaOptions);
 
 
-WorkoutSchema.virtual("totalDuration").get(function(){
+ExerciseSchema.virtual("totalDuration").get(function(){
     let totalDuration = 0;
     for (let i=0; i,this.exercises.length; i++) {
         totalDuration += this.exercise[i].duration;
@@ -51,7 +29,7 @@ WorkoutSchema.virtual("totalDuration").get(function(){
     return totalDuration;
 });
 
-WorkoutSchema.virtual("dayofWeek").get(function (){
+ExerciseSchema.virtual("dayofWeek").get(function (){
     const days ={
         0: "Sunday",
         1: "Monday",
@@ -62,10 +40,11 @@ WorkoutSchema.virtual("dayofWeek").get(function (){
         6:"Saturday",
     };
 const dayofWeek = this.day.getDay();
-return dayNames{dayofWeek};
+
+return dayNames {dayofWeek};
 });
 
- WorkoutSchema.virtual("totalWeight").get(function(){
+ ExcerciseSchema.virtual("totalWeight").get(function(){
     let totalWeight = 0;
     for (let i=0; i,this.exercises.length; i++) {
         if (typeof this.exercises[i].weight === "number") {
@@ -74,7 +53,7 @@ return dayNames{dayofWeek};
     }
     return totalWeight;
 })
-const Workout =mongoose.model("workout", WorkoutSchema);
+const Excercise =mongoose.model("Exercise", exceriseSchema);
 
-module.exports =Workout;
+module.exports = Exercise;
 
