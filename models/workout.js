@@ -65,16 +65,16 @@ const dayofWeek = this.day.getDay();
 return dayNames{dayofWeek};
 });
 
-// WorkoutSchema.virtual("totalWeight").get(function(){
-//     let totalWeight = 0;
-//     for (let i=0; i,this.exercises.length; i++) {
-//         if (typeof this.exercises[i].weight === "number") {
-//             totalWeight += (this.exercise[i].weight * this.exercisea[i].reps * this.ecercise[i].sets);
-//         }
-//     }
-//     return totalWeight;
-// })
-// const Workout =mongoose.model("workout", WorkoutSchema);
+ WorkoutSchema.virtual("totalWeight").get(function(){
+    let totalWeight = 0;
+    for (let i=0; i,this.exercises.length; i++) {
+        if (typeof this.exercises[i].weight === "number") {
+            totalWeight += (this.exercise[i].weight * this.exercisea[i].reps * this.ecercise[i].sets);
+        }
+    }
+    return totalWeight;
+})
+const Workout =mongoose.model("workout", WorkoutSchema);
 
 module.exports =Workout;
 
